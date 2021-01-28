@@ -1,0 +1,18 @@
+{
+  "name": "cypress-westpack-example",
+  "version": "1.0.0",
+  "description": "cypress.io test automation example for Westpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-winstonnolan:WinstonN/cypress-westpack-example.git"
+  },
+  "author": "Winston Nolan <winston.nolan@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^6.3.0"
+  }
+}
