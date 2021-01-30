@@ -16,5 +16,12 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+// custom commands
+// rest
+// import './westpack/api/rest/custom-commands'
+
+// graphql
+// import './westpack/api/graphql/custom-commands'
+
+// web
+import './westpack/web/custom-commands.js'

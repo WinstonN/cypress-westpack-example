@@ -1,0 +1,71 @@
+{
+  "navigation": {
+    "kiwisaver-menu-link": {
+      "selector": "#ubermenu-section-link-kiwisaver-ps",
+      "content": "KiwiSaver"
+    },
+    "kiwisaver-calculators": {
+      "selector": "#ubermenu-item-cta-kiwisaver-calculators-ps",
+      "content": "KiwiSaver calculators"
+    },
+    "kiwisaver-scheme-retirement-calculator": {
+      "selector": ".btn",
+      "content": "Click here to get started."
+    }
+  },
+  "required-dom-elements": {
+    "iframe": {
+      "selector": "#calculator-embed iframe",
+      "content": ""
+    },
+    "widget": {
+      "selector": "#widget",
+      "content": "Complete the form to see your KiwiSaver retirement projections."
+    },
+    "form-group-fields": {
+      "selector": ".field-group-set .field-group",
+      "content": "",
+      "fields": {
+        "current-age": {
+          "selector": "[label='Current age']",
+          "content": "",
+          "info-message": {
+            "selector": ".message-info",
+            "content": "This calculator has an age limit of 64 years old as you need to be under the age of 65 to join KiwiSaver."
+          }
+        },
+        "employment-status": {
+          "selector": "[label='Employment status']",
+          "content": ""
+        },
+        "salary-or-wages": {
+          "selector": "[label='Salary or wages per year (before tax)']",
+          "content": ""
+        },
+        "member-contribution": {
+          "selector": "[label='KiwiSaver member contribution']",
+          "content": ""
+        },
+        "risk-profile": {
+          "selector": "[label='Risk profile']",
+          "content": ""
+        },
+        "current-kiwisaver-balance": {
+          "selector": "[label='Current KiwiSaver balance']",
+          "content": ""
+        },
+        "voluntary-contributions": {
+          "selector": "[label='Voluntary contributions']",
+          "content": ""
+        },
+        "savings-goal": {
+          "selector": "[label='Savings goal at retirement']",
+          "content": ""
+        }
+      },
+      "fields-info": {
+        "selector": ".icon-btn-info"
+      }
+    }
+  }
+}

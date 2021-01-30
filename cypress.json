@@ -8,23 +8,23 @@
   "supportFile": "cypress/support/index.js",
   "projectId": "",
   "viewports": {
-    "desktop": [
-      "macbook-15",
-      "macbook-11"
-    ],
-    "ipad": [
-      "ipad-mini",
-      "ipad-2"
-    ],
-    "mobile": [
-      "iphone-6",
-      "iphone-5"
-    ]
+    "desktop": {
+      "macbook-15": "macbook-15",
+      "macbook-11": "macbook-11"
+    },
+    "ipad": {
+      "ipad-mini": "ipad-mini",
+      "ipad-2": "ipad-2"
+    },
+    "mobile": {
+      "iphone-6": "iphone-6",
+      "iphone-5": "iphone-5"
+    }
   },
   "viewportWidth": 1440,
   "viewportHeight": 900,
   "env": {},
-  "chromeWebSecurity": false,
+  "chromeWebSecurity": true,
   "userAgent": "cypress.io example for westpack - Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html",
   "blockHosts": [
     "*.google-analytics.com"
