@@ -66,6 +66,151 @@
       "fields-info": {
         "selector": ".icon-btn-info"
       }
+    },
+    "results": {
+      "selector": ".results-field-group-set",
+      "content": "At age 65, your KiwiSaver balance is estimated to be",
+      "graph": {
+        "selector": ".results-graph"
+      }
+    }
+  },
+  "scenarios": {
+    "scenarios-1": {
+      "current-age" :{
+        "element-type": "input",
+        "selector": "",
+        "value": "30"
+      },
+      "employment-status": {
+        "element-type": "",
+        "selector": ".select-control",
+        "value": "Employed"
+      },
+      "salary": {
+        "element-type": "input",
+        "selector": "",
+        "value": "82000"
+      },
+      "member-contribution": {
+        "element-type": "label",
+        "selector": "input",
+        "value": "4%"
+      },
+      "risk-profile": {
+        "element-type": "label",
+        "selector": "input",
+        "value": "Defensive"
+      },
+      "kiwisaver-projections": {
+        "element-type": "button",
+        "selector": ".field-group-set",
+        "value": "View your KiwiSaver retirement projections"
+      } 
+    },
+    "scenarios-2": {
+      "current-age": {
+        "element-type": "input",
+        "selector": "",
+        "value": "45"
+      },
+      "employment-status": {
+        "element-type": "",
+        "selector": ".select-control",
+        "value": "Self-employed"
+      },
+      "current-kiwisaver-balance": {
+        "element-type": "input",
+        "selector": "",
+        "value": "100000"
+      },
+      "voluntary-contributions": {
+        "element-type": "input",
+        "selector": "",
+        "value": "90"
+      },
+      "voluntary-contributions-frequency": {
+        "element-type": "",
+        "selector": ".select-control",
+        "value": "Fortnightly"
+      },
+      "salary": {
+        "element-type": "input",
+        "selector": "",
+        "value": "82000"
+      },
+      "member-contribution": {
+        "element-type": "label",
+        "selector": "input",
+        "value": "4%"
+      },
+      "risk-profile": {
+        "element-type": "label",
+        "selector": "input",
+        "value": "Conservative"
+      },
+      "savings-goal": {
+        "element-type": "input",
+        "selector": "",
+        "value": "290000"
+      },
+      "kiwisaver-projections": {
+        "element-type": "button",
+        "selector": ".field-group-set",
+        "value": "View your KiwiSaver retirement projections"
+      }
+    },
+    "scenarios-3": {
+      "current-age": {
+        "element-type": "input",
+        "selector": "",
+        "value": "55"
+      },
+      "employment-status": {
+        "element-type": "",
+        "selector": ".select-control",
+        "value": "Not employed"
+      },
+      "current-kiwisaver-balance": {
+        "element-type": "input",
+        "selector": "",
+        "value": "140000"
+      },
+      "voluntary-contributions": {
+        "element-type": "input",
+        "selector": "",
+        "value": "10"
+      },
+      "voluntary-contributions-frequency": {
+        "element-type": "",
+        "selector": ".select-control",
+        "value": "Annually"
+      },
+      "salary": {
+        "element-type": "input",
+        "selector": "",
+        "value": "82000"
+      },
+      "member-contribution": {
+        "element-type": "label",
+        "selector": "input",
+        "value": "4%"
+      },
+      "risk-profile": {
+        "element-type": "label",
+        "selector": "input",
+        "value": "Balanced"
+      },
+      "savings-goal": {
+        "element-type": "input",
+        "selector": "",
+        "value": "400000"
+      },
+      "kiwisaver-projections": {
+        "element-type": "button",
+        "selector": ".field-group-set",
+        "value": "View your KiwiSaver retirement projections"
+      }
     }
   }
 }

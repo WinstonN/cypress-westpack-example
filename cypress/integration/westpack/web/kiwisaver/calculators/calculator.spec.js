@@ -10,10 +10,12 @@ describe('testing the kiwisaver calculator functionality', () => {
   const url = Cypress.env('baseUrl') ?? Cypress.config('restApiUrl')
   const fixture = require('../../../../../fixtures/westpack/web/kiwisaver/calculators/calculators.json')
 
-  let iframeSelector = fixture['required-dom-elements']['iframe']['selector']
-  let formGroupFieldsSelector = fixture['required-dom-elements']['form-group-fields']['selector']
-  let formGroupFieldsOptions = fixture['required-dom-elements']['form-group-fields']['fields']
-  let formGroupFieldInfoSelector = fixture['required-dom-elements']['form-group-fields']['fields-info']['selector']
+  let requiredDomElements = fixture['required-dom-elements']
+  let iframeSelector = requiredDomElements['iframe']['selector']
+  let formGroupFieldsSelector = requiredDomElements['form-group-fields']['selector']
+  let formGroupFieldsOptions = requiredDomElements['form-group-fields']['fields']
+  let formGroupFieldInfoSelector = requiredDomElements['form-group-fields']['fields-info']['selector']
+  let scenariosFixtureData = fixture['scenarios']
 
   /**
    * this will execture before we run any of our tests
@@ -118,6 +120,8 @@ describe('testing the kiwisaver calculator functionality', () => {
      * Calculation 3: User whose current aged 55 is not employed, current KiwiSaver balance is $140000,
      * voluntary contributes $10 annually and chooses Balanced risk profile with saving goals
      * requirement of $200000 is able to calculate his projected balances at retirement.
+     * 
+     * TODO: We could probably do this better with a well constructed data object and a loop
      */
     describe('Test User Story 2', () => {
       it('Calculation 1', () => {
@@ -129,54 +133,53 @@ describe('testing the kiwisaver calculator functionality', () => {
         // age
         cy.get('@iframe')
           .find(formGroupFieldsOptions['current-age']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-1']['current-age']['element-type'])
           .click()
-          .type('30')
+          .type(scenariosFixtureData['scenarios-1']['current-age']['value'])
 
         // employment status
         cy.get('@iframe')
           .find(formGroupFieldsOptions['employment-status']['selector'])
-          .find('.select-control')
+          .find(scenariosFixtureData['scenarios-1']['employment-status']['selector'])
           .click()
-          .contains('Employed')
+          .contains(scenariosFixtureData['scenarios-1']['employment-status']['value'])
           .click()
         
         // salary
         cy.get('@iframe')
           .find(formGroupFieldsOptions['salary-or-wages']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-1']['salary']['element-type'])
           .click()
-          .type('82000')
+          .type(scenariosFixtureData['scenarios-1']['salary']['value'])
 
         // member contribution 
         cy.get('@iframe')
           .find(formGroupFieldsOptions['member-contribution']['selector'])
-          .contains('label', '4%')
-          .find('input')
+          .contains(scenariosFixtureData['scenarios-1']['member-contribution']['element-type'], scenariosFixtureData['scenarios-1']['member-contribution']['value'])
+          .find(scenariosFixtureData['scenarios-1']['member-contribution']['selector'])
           .click()
 
         // risk profile
         cy.get('@iframe')
           .find(formGroupFieldsOptions['risk-profile']['selector'])
-          .contains('label', 'Defensive')
-          .find('input')
+          .contains(scenariosFixtureData['scenarios-1']['risk-profile']['element-type'], scenariosFixtureData['scenarios-1']['risk-profile']['value'])
+          .find(scenariosFixtureData['scenarios-1']['risk-profile']['selector'])
           .click()
 
         // kiwi saver projections
         cy.get('@iframe')
-          .find('.field-group-set')
-          .contains('button', 'View your KiwiSaver retirement projections')
+          .find(scenariosFixtureData['scenarios-1']['kiwisaver-projections']['selector'])
+          .contains(scenariosFixtureData['scenarios-1']['kiwisaver-projections']['element-type'], scenariosFixtureData['scenarios-1']['kiwisaver-projections']['value'])
           .click()
 
         // assert
         cy.get('@iframe')
-          .find('.results-field-group-set')
+          .find(requiredDomElements['results']['selector'])
           .should((result) => {
             expect(result).to.be.visible
-            expect(result).to.contain('At age 65, your KiwiSaver balance is estimated to be')
-            expect(result.find('.results-graph')).to.be.visible
+            expect(result).to.contain(requiredDomElements['results']['content'])
+            expect(result.find(requiredDomElements['results']['graph']['selector'])).to.be.visible
           })
-
 
       })
 
@@ -189,67 +192,67 @@ describe('testing the kiwisaver calculator functionality', () => {
         // age
         cy.get('@iframe')
           .find(formGroupFieldsOptions['current-age']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-2']['current-age']['element-type'])
           .click()
-          .type('45')
+          .type(scenariosFixtureData['scenarios-2']['current-age']['value'])
  
         // employment status
         cy.get('@iframe')
           .find(formGroupFieldsOptions['employment-status']['selector'])
-          .find('.select-control')
+          .find(scenariosFixtureData['scenarios-2']['employment-status']['selector'])
           .click()
-          .contains('Self-employed')
+          .contains(scenariosFixtureData['scenarios-2']['employment-status']['value'])
           .click()
 
         // current kiwisaver balance 
         cy.get('@iframe')
           .find(formGroupFieldsOptions['current-kiwisaver-balance']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-2']['current-kiwisaver-balance']['element-type'])
           .click()
-          .type('100000')
+          .type(scenariosFixtureData['scenarios-2']['current-kiwisaver-balance']['value'])
 
         // voluntary contributions
         cy.get('@iframe')
           .find(formGroupFieldsOptions['voluntary-contributions']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-2']['voluntary-contributions']['element-type'])
           .click()
-          .type('90')
+          .type(scenariosFixtureData['scenarios-2']['voluntary-contributions']['value'])
 
         // voluntary contributions frequency
         cy.get('@iframe')
           .find(formGroupFieldsOptions['voluntary-contributions']['selector'])
-          .find('.select-control')
+          .find(scenariosFixtureData['scenarios-2']['voluntary-contributions-frequency']['selector'])
           .click()
-          .contains('Fortnightly')
+          .contains(scenariosFixtureData['scenarios-2']['voluntary-contributions-frequency']['value'])
           .click()
 
         // risk profile
         cy.get('@iframe')
           .find(formGroupFieldsOptions['risk-profile']['selector'])
-          .contains('label', 'Conservative')
-          .find('input')
+          .contains(scenariosFixtureData['scenarios-2']['risk-profile']['element-type'], scenariosFixtureData['scenarios-2']['risk-profile']['value'])
+          .find(scenariosFixtureData['scenarios-2']['risk-profile']['selector'])
           .click()
 
         // savings goal at retirement
         cy.get('@iframe')
           .find(formGroupFieldsOptions['savings-goal']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-2']['savings-goal']['element-type'])
           .click()
-          .type('290000')
+          .type(scenariosFixtureData['scenarios-2']['savings-goal']['value'])
 
-        // view kiwi saver projections
+        // kiwi saver projections
         cy.get('@iframe')
-          .find('.field-group-set')
-          .contains('button', 'View your KiwiSaver retirement projections')
+          .find(scenariosFixtureData['scenarios-2']['kiwisaver-projections']['selector'])
+          .contains(scenariosFixtureData['scenarios-2']['kiwisaver-projections']['element-type'], scenariosFixtureData['scenarios-1']['kiwisaver-projections']['value'])
           .click()
 
         // assert
         cy.get('@iframe')
-          .find('.results-field-group-set')
+          .find(requiredDomElements['results']['selector'])
           .should((result) => {
             expect(result).to.be.visible
-            expect(result).to.contain('At age 65, your KiwiSaver balance is estimated to be')
-            expect(result.find('.results-graph')).to.be.visible
+            expect(result).to.contain(requiredDomElements['results']['content'])
+            expect(result.find(requiredDomElements['results']['graph']['selector'])).to.be.visible
           })
         
 
@@ -263,72 +266,70 @@ describe('testing the kiwisaver calculator functionality', () => {
 
         // age
         cy.get('@iframe')
-          .find('[label="Current age"]')
-          .find('input')
+          .find(formGroupFieldsOptions['current-age']['selector'])
+          .find(scenariosFixtureData['scenarios-3']['current-age']['element-type'])
           .click()
-          .type('55')
+          .type(scenariosFixtureData['scenarios-3']['current-age']['value'])
 
         // employment status
         cy.get('@iframe')
           .find(formGroupFieldsOptions['employment-status']['selector'])
-          .find('.select-control')
+          .find(scenariosFixtureData['scenarios-3']['employment-status']['selector'])
           .click()
-          .contains('Not employed')
+          .contains(scenariosFixtureData['scenarios-3']['employment-status']['value'])
           .click()
 
         // current kiwisaver balance 
         cy.get('@iframe')
           .find(formGroupFieldsOptions['current-kiwisaver-balance']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-3']['current-kiwisaver-balance']['element-type'])
           .click()
-          .type('140000')
+          .type(scenariosFixtureData['scenarios-3']['current-kiwisaver-balance']['value'])
 
         // voluntary contributions
         cy.get('@iframe')
           .find(formGroupFieldsOptions['voluntary-contributions']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-3']['voluntary-contributions']['element-type'])
           .click()
-          .type('10')
+          .type(scenariosFixtureData['scenarios-3']['voluntary-contributions']['value'])
 
         // voluntary contributions frequency
         cy.get('@iframe')
           .find(formGroupFieldsOptions['voluntary-contributions']['selector'])
-          .find('.select-control')
+          .find(scenariosFixtureData['scenarios-3']['voluntary-contributions-frequency']['selector'])
           .click()
-          .contains('Annually')
+          .contains(scenariosFixtureData['scenarios-3']['voluntary-contributions-frequency']['value'])
           .click()
 
         // risk profile
         cy.get('@iframe')
           .find(formGroupFieldsOptions['risk-profile']['selector'])
-          .contains('label', 'Balanced')
-          .find('input')
+          .contains(scenariosFixtureData['scenarios-3']['risk-profile']['element-type'], scenariosFixtureData['scenarios-3']['risk-profile']['value'])
+          .find(scenariosFixtureData['scenarios-3']['risk-profile']['selector'])
           .click()
 
         // savings goal at retirement
         cy.get('@iframe')
           .find(formGroupFieldsOptions['savings-goal']['selector'])
-          .find('input')
+          .find(scenariosFixtureData['scenarios-3']['savings-goal']['element-type'])
           .click()
-          .type('400000')
+          .type(scenariosFixtureData['scenarios-3']['savings-goal']['value'])
 
-        // view kiwi saver projections
+        // kiwi saver projections
         cy.get('@iframe')
-          .find('.field-group-set')
-          .contains('button', 'View your KiwiSaver retirement projections')
+          .find(scenariosFixtureData['scenarios-3']['kiwisaver-projections']['selector'])
+          .contains(scenariosFixtureData['scenarios-3']['kiwisaver-projections']['element-type'], scenariosFixtureData['scenarios-1']['kiwisaver-projections']['value'])
           .click()
 
         // assert
         cy.get('@iframe')
-          .find('.results-field-group-set')
+          .find(requiredDomElements['results']['selector'])
           .should((result) => {
             expect(result).to.be.visible
-            expect(result).to.contain('At age 65, your KiwiSaver balance is estimated to be')
-            expect(result.find('.results-graph')).to.be.visible
+            expect(result).to.contain(requiredDomElements['results']['content'])
+            expect(result.find(requiredDomElements['results']['graph']['selector'])).to.be.visible
           })
-
       })
-
     })
   })
 })
