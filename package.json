@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com-winstonnolan:WinstonN/cypress-westpack-example.git"
+    "url": "git@github.com:WinstonN/cypress-westpack-example.git"
   },
   "author": "Winston Nolan <winston.nolan@gmail.com>",
   "license": "ISC",

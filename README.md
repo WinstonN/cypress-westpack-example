@@ -1,11 +1,16 @@
 # cypress-westpack-example
 cypress.io test automation example for Westpack
 
-# install cypress
+# get code
 https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements
+
 ```bash
-npm init
-npm install cypress --save-dev
+# clone repository
+git clone git@github.com:WinstonN/cypress-westpack-example.git
+
+# install
+cd cypress-westpack-example
+npm install
 ```
 
 # run cypress
